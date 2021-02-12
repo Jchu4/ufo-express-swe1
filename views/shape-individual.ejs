@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- public/styles.css -->
+  <link rel="stylesheet" href="/public/style.css" type="text/css">
+  <!-- Bootstrap 4.0 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <title>Shape - <%=shape%></title>
+</head>
+<body>
+  <!-- Start of Navbar -->
+  <%- include('navbar.ejs') -%>
+  <!-- End of Navbar -->
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col">
+         <h1 class="mb-4">All <%=shape%> Sightings</h1>
+         
+         <div id="accordion">
+           <!-- Start of Each Sighting -->
+          <% for (let index = 0; index < content.length; index++)  { %>
+            <% if (content[index].shape === shape) { %>
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="mb-0">
+                    <button id="collapse-btn" class="btn btn-light btn-block text-left" data-toggle="collapse" data-target="#collapse<%=index%>" aria-expanded="true" aria-controls="collapse<%=index%>">Sighting #<%=index + 1%>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapse<%=index%>" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body">
+                    <!-- Start of Carousel -->
+                    <div id="sightingCarousel<%=index%>" class="carousel slide" data-ride="carousel">
+                      <div class="carousel-inner">
+
+                        <!-- Start of Carousel Cards -->
+                        <!-- Card 1. -->
+                        <div class="carousel-item active">
+                          <div id="carousel-card-w-95" class="container">
+                            <div class="row d-flex justify-content-center align-items-stretch">
+                              <div class="col-md-12 col-lg-2 font-weight-bold">
+                                <h6>Description:</h6>
+                              </div>
+                              <div class="col-md-12 col-lg-9">
+                                <p class="font-weight-light"><%= content[index].text %></p>
+                              </div>
+                            </div>
+                          </div>  
+                        </div> 
+                        <!-- Card 2. -->
+                        <div class="carousel-item">
+                          <div class="row justify-content-center">
+                            <!-- Card 2A. -->
+                            <div class="card col-3 mx-2" >
+                              <div class="card-body">
+                                <h4 class="card-title"><%=content[index].city%></h4>
+                                <h6 class="card-subtitle mb-2 text-muted"><%=content[index].state%></h6>
+                                <p class="card-text"></p>
+                              </div>
+                            </div>
+                            <!-- Card 2B. -->
+                            <div class="card col-3 mx-2">
+                              <div class="card-body">
+                                <h4 class="card-title"><%=content[index].date_time%></h4>
+                                <h6 class="card-subtitle mb-2 text-muted">Duration: <%=content[index].duration%></h6>
+                                <p class="card-text"></p>
+                              </div>
+                            </div>
+                            <!-- Card 2C. -->
+                            <div class="card col-3 mx-2" >
+                              <div class="card-body">
+                                <h4 class="card-title">Shape</h4>
+                                <h6 class="card-subtitle mb-2 text-muted"><%=content[index].shape%></h6>
+                                <p class="card-text"></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>  
+                        <!-- Card 3. -->
+                        <div class="carousel-item">
+                          <div id="carousel-card-w-95" class="container">
+                            <div class="row d-flex justify-content-center align-items-stretch">
+                              <div class="col-md-12 col-lg-2 font-weight-bold">
+                                <h6>Summary:</h6>
+                              </div>
+                              <div class="col-md-12 col-lg-9">
+                                <p class="lead"><%= content[index].summary %></p>
+                              </div>
+                            </div>
+                          </div>  
+                        </div>  
+                      </div>
+                      <!-- End of Carousel Card -->
+                      <!-- Start of Carousel Buttons -->
+                      <a id="carousel-btns" class="carousel-control-prev" href="#sightingCarousel<%=index%>" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon d-flex align-items-center" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a id="carousel-btns" class="carousel-control-next" href="#sightingCarousel<%=index%>" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon d-flex align-items-center" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                      <!-- End of Carousel Buttons -->
+                    </div>
+                    <!-- End of Carousel -->
+                  </div>
+                </div>
+              </div>
+            <% } %>  
+          <% } %>
+
+          <!-- End of Each Sighting -->
+         </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <%-include('bootstrap-scripts')-%>
+</body>
+</html>

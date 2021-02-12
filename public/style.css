@@ -1,0 +1,55 @@
+#submit-btn {
+  margin: 30px auto;
+  padding: 10px;
+}
+
+#dropdown {
+  margin: 20px;
+}
+
+#sighting-edit-desc {
+  height: 250px;
+}
+
+#describe-encounter {
+  height: 150px;
+}
+
+#cover-delete {
+  background-image: url("/public/ufo.jpg");
+  color: white;
+  height: 800px;
+}
+
+#collapse-btn:hover {
+  color: rgb(0, 129, 214);
+  border: none;
+  background-color: inherit;
+}
+
+#carousel-btns {
+  width: 2%;
+  opacity: 30%;
+  vertical-align: middle;
+}
+
+.carousel-control-next-icon {
+  vertical-align: middle;
+}
+
+.carousel-control-next-icon:after {
+  content: ">";
+  font-size: 40px;
+  color: grey;
+}
+
+.carousel-control-prev-icon:after {
+  content: "<";
+  font-size: 40px;
+  color: grey;
+}
+
+#carousel-card-w-95 {
+  padding-top: 5px;
+  width: 95%;
+}
